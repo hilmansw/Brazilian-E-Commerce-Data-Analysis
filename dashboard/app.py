@@ -74,7 +74,7 @@ def create_seller_city_df(df):
     return seller_city_df
 
 # load berkas all_data sebagai sebuah DataFrame
-all_df = pd.read_csv("D:\Dicoding Submission\e-commerce-streamlit\dashboard\main_data.csv")
+all_df = pd.read_csv("dashboard/main_data.csv")
 
 # mengurutkan DataFrame berdasarkan order_purchase_timestamp
 datetime_columns = ["shipping_limit_date", "order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
@@ -90,7 +90,7 @@ max_date = all_df["order_purchase_timestamp"].max()
 
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("logo.png")
+    st.image("dashboard/logo.png")
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
         label='Pilih Rentang Waktu',
