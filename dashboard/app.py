@@ -1,4 +1,3 @@
-import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -75,10 +74,7 @@ def create_seller_city_df(df):
     return seller_city_df
 
 # load berkas all_data sebagai sebuah DataFrame
-current_directory = os.getcwd()
-file_path = os.path.join(current_directory, "../main_data.csv")
-
-all_df = pd.read_csv(file_path)
+all_df = pd.read_csv("main_data.csv")
 
 # mengurutkan DataFrame berdasarkan order_purchase_timestamp
 datetime_columns = ["shipping_limit_date", "order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
@@ -94,7 +90,7 @@ max_date = all_df["order_purchase_timestamp"].max()
 
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("logo.png")
+    st.image("dashboard/logo.png")
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
         label='Pilih Rentang Waktu',
@@ -202,7 +198,7 @@ st.pyplot(fig)
 # Plot produk yang paling sedikit diminati
 fig, ax = plt.subplots(figsize=(12, 6))
 
-sns.barplot(x="order_item_id", y="product_category_name", data=sum_order_items_df.sort_values(by="order_item_id", ascending=False).head(5), palette=colors, ax=ax)
+sns.barplot(x="order_item_id", y="product_category_name", data=sum_order_items_df.sort_values(by="order_item_id", ascending=True).head(5), palette=colors, ax=ax)
 ax.set_ylabel(None)
 ax.set_xlabel(None)
 ax.set_title("Produk yang Paling Sedikit Diminati", loc="center", fontsize=18)
