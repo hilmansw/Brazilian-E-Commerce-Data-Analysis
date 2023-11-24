@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -74,7 +75,10 @@ def create_seller_city_df(df):
     return seller_city_df
 
 # load berkas all_data sebagai sebuah DataFrame
-all_df = pd.read_csv("main_data.csv")
+current_directory = os.getcwd()
+file_path = os.path.join(current_directory, "../main_data.csv")
+
+all_df = pd.read_csv(file_path)
 
 # mengurutkan DataFrame berdasarkan order_purchase_timestamp
 datetime_columns = ["shipping_limit_date", "order_purchase_timestamp", "order_approved_at", "order_delivered_carrier_date", "order_delivered_customer_date", "order_estimated_delivery_date"]
@@ -90,7 +94,7 @@ max_date = all_df["order_purchase_timestamp"].max()
 
 with st.sidebar:
     # Menambahkan logo perusahaan
-    st.image("dashboard/logo.png")
+    st.image("logo.png")
     # Mengambil start_date & end_date dari date_input
     start_date, end_date = st.date_input(
         label='Pilih Rentang Waktu',
