@@ -198,7 +198,7 @@ st.pyplot(fig)
 # Plot produk yang paling sedikit diminati
 fig, ax = plt.subplots(figsize=(12, 6))
 
-sns.barplot(x="order_item_id", y="product_category_name", data=sum_order_items_df.sort_values(by="order_item_id", ascending=False).head(5), palette=colors, ax=ax)
+sns.barplot(x="order_item_id", y="product_category_name", data=sum_order_items_df.sort_values(by="order_item_id", ascending=True).head(5), palette=colors, ax=ax)
 ax.set_ylabel(None)
 ax.set_xlabel(None)
 ax.set_title("Produk yang Paling Sedikit Diminati", loc="center", fontsize=18)
@@ -249,7 +249,7 @@ fig, ax = plt.subplots(figsize=(10, 5))
 sns.barplot(
     x="customer_count",
     y="customer_city",
-    data=customer_city_df.sort_values(by="customer_count", ascending=False),
+    data=customer_city_df.sort_values(by="customer_count", ascending=True),
     palette=colors
 )
 ax.set_title("10 Kota dengan Pelanggan Paling Sedikit", loc="center", fontsize=16)
@@ -302,7 +302,7 @@ fig, ax = plt.subplots(figsize=(10, 5))
 sns.barplot(
     x="seller_count",
     y="seller_city",
-    data=seller_city_df.sort_values(by="seller_count", ascending=False),
+    data=seller_city_df.sort_values(by="seller_count", ascending=True),
     palette=colors
 )
 ax.set_title("10 Kota dengan Penjual Paling Sedikit", loc="center", fontsize=16)
