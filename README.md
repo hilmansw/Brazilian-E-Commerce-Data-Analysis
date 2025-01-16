@@ -1,4 +1,4 @@
-# Dicoding Proyek Analisis Data
+# Brazilian E-Commerce Data Analysis
 ## Setup environment
 ```
 conda create --name main-ds python=3.9
